@@ -1,0 +1,35 @@
+disease,fever,cough,fatigue,headache,sore_throat,runny_nose,shortness_of_breath,chest_pain,nausea,diarrhea,rash,joint_pain
+Common Cold,0,1,0,0,1,1,0,0,0,0,0,0
+Common Cold,0,1,0,1,1,1,0,0,0,0,0,0
+Common Cold,0,1,0,0,1,1,0,0,0,0,0,0
+Flu,1,1,1,1,1,0,0,0,0,0,0,0
+Flu,1,1,1,1,1,0,0,0,0,0,0,0
+Flu,1,1,1,0,1,0,0,0,0,0,0,0
+COVID-19,1,1,1,1,0,0,1,0,0,0,0,0
+COVID-19,1,1,1,1,0,0,1,0,0,0,0,0
+COVID-19,1,1,1,0,0,0,1,0,0,0,0,0
+Migraine,0,0,1,1,0,0,0,0,0,0,0,0
+Migraine,0,0,0,1,0,0,0,0,0,0,0,0
+Migraine,0,0,1,1,0,0,0,0,0,0,0,0
+Food Poisoning,1,0,1,0,0,0,0,0,1,1,0,0
+Food Poisoning,0,0,1,0,0,0,0,0,1,1,0,0
+Food Poisoning,0,0,0,0,0,0,0,0,1,1,0,0
+Dengue,1,0,1,1,0,0,0,0,0,0,1,1
+Dengue,1,0,1,1,0,0,0,0,0,0,1,1
+Dengue,1,0,1,1,0,0,0,0,0,0,1,1
+Pneumonia,1,1,1,0,0,0,1,1,0,0,0,0
+Pneumonia,1,1,1,0,0,0,1,1,0,0,0,0
+Pneumonia,1,1,1,0,0,0,1,1,0,0,0,0
+Allergy,0,0,0,0,0,1,0,0,0,0,0,0
+Allergy,0,0,0,0,0,1,0,0,0,0,0,0
+Allergy,0,0,0,0,0,1,0,0,0,0,0,0
+Bronchitis,0,1,1,0,0,0,1,0,0,0,0,0
+Bronchitis,0,1,1,0,0,0,1,0,0,0,0,0
+Bronchitis,0,1,1,0,0,0,1,0,0,0,0,0
+Gastritis,0,0,1,0,0,0,0,0,1,1,0,0
+Gastritis,0,0,1,0,0,0,0,0,1,1,0,0
+Gastritis,0,0,1,0,0,0,0,0,1,1,0,0
+Chickenpox,1,0,1,1,0,0,0,0,0,0,1,0
+Chickenpox,1,0,1,1,0,0,0,0,0,0,1,0
+Chickenpox,1,0,1,1,0,0,0,0,0,0,1,0
+

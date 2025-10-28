@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Prediction Result</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>Prediction Result</h1>
+		</header>
+
+		<div class="card result-hero">
+			<div class="result-header">
+				<span class="badge badge-accent">Most Likely</span>
+				<h2 class="result-title">{{ prediction }}</h2>
+				{% if top3 and top3[0][1] is not none %}
+					<p class="muted">Confidence: {{ '%.1f' % (top3[0][1] * 100) }}%</p>
+				{% endif %}
+			</div>
+			<div class="result-meta">
+				{% if age is not none %}
+					<span class="pill">Age: {{ age }}</span>
+				{% endif %}
+				{% if blood_group %}
+					<span class="pill">Blood Group: {{ blood_group }}</span>
+				{% endif %}
+			</div>
+		</div>
+
+		{% if top3 %}
+			<div class="card">
+				<h3>Prediction Breakdown</h3>
+				<div class="stack">
+					{% for item in top3_view %}
+						<div class="progress-row">
+							<div class="progress-label">
+								<span class="badge">{{ loop.index }}</span>
+								<strong>{{ item.cls }}</strong>
+								{% if item.percent is not none %}
+									<span class="muted">{{ item.percent }}%</span>
+								{% endif %}
+							</div>
+							{% if item.bar is not none %}
+								<div class="progress">
+									<div class="progress-bar" data-w="{{ item.bar }}"></div>
+								</div>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+
+		<div class="card subtle">
+			<h3>Selected Symptoms</h3>
+			<ul class="chips">
+				{% for s in selected_symptoms %}
+					<li>{{ s.replace('_', ' ').title() }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+		<div class="card">
+			<h3>Suggested Care (Demo)</h3>
+			<div class="grid">
+				<div>
+					<h4>Food</h4>
+					<ul class="bullet">
+						{% for f in recommendations.food %}
+							<li>{{ f }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div>
+					<h4>Tablets</h4>
+					<ul class="bullet">
+						{% for t in recommendations.tablets %}
+							<li>{{ t }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<p class="muted" style="margin-top:8px">Educational demo only. Consult a qualified doctor before taking any medication.</p>
+		</div>
+
+		<div class="actions">
+			<a href="{{ url_for('index') }}" class="button">Back</a>
+		</div>
+
+		<footer>
+			<p>For demo purposes only. Not medical advice.</p>
+		</footer>
+	</div>
+
+	<script>
+		// Apply dynamic widths without inline CSS expressions to keep linters happy
+		(function(){
+			var bars = document.querySelectorAll('.progress-bar[data-w]');
+			for (var i = 0; i < bars.length; i++) {
+				var v = parseInt(bars[i].getAttribute('data-w'), 10);
+				if (!isNaN(v)) {
+					bars[i].style.width = v + '%';
+				}
+			}
+		})();
+	</script>
+</body>
+</html>
+
+

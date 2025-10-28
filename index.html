@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Disease Prediction</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>Disease Prediction System</h1>
+			<p>Select your symptoms to get a predicted condition.</p>
+		</header>
+
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul class="flash">
+					{% for message in messages %}
+						<li>{{ message }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+
+		<form method="POST" action="{{ url_for('predict') }}" class="card">
+			<div class="form-row">
+				<label>
+					<span>Age</span>
+					<input type="number" name="age" min="0" max="120" placeholder="e.g., 32" />
+				</label>
+				<label>
+					<span>Blood Group</span>
+					<select name="blood_group">
+						<option value="">Select</option>
+						<option>O+</option>
+						<option>O-</option>
+						<option>A+</option>
+						<option>A-</option>
+						<option>B+</option>
+						<option>B-</option>
+						<option>AB+</option>
+						<option>AB-</option>
+					</select>
+				</label>
+			</div>
+			<div class="grid">
+				{% for symptom in symptoms %}
+					<label class="checkbox">
+						<input type="checkbox" name="symptoms" value="{{ symptom }}" />
+						<span>{{ symptom.replace('_', ' ').title() }}</span>
+					</label>
+				{% endfor %}
+			</div>
+			<div class="actions">
+				<button type="submit">Predict Disease</button>
+			</div>
+		</form>
+
+		<form method="POST" action="{{ url_for('retrain') }}" class="card subtle">
+			<p>Update the model using the bundled dataset.</p>
+			<button type="submit">Retrain Model</button>
+		</form>
+
+		<footer>
+			<p>For demo purposes only. Not medical advice.</p>
+		</footer>
+	</div>
+</body>
+</html>
+
+
